@@ -1,31 +1,33 @@
-import { Metadata } from "next";
 import { PricingTable } from "@/components/sections/pricing-table";
 import { CTASection } from "@/components/sections/cta-section";
+import { Container } from "@/components/ui/container";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
-  description: "Standardized pricing for hardware repair and diagnostics.",
+  description: "View our service cost matrix and repair capabilities.",
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <div className="py-section max-w-[1440px] mx-auto px-6 border-b border-[#1a1a1a]">
-        <div className="max-w-3xl">
-          <span className="font-mono text-primary text-sm mb-2 block">ROOT / SERVICES</span>
-          <h1 className="font-sans text-4xl md:text-5xl font-bold text-text mb-6">
-            Service Cost Matrix
-          </h1>
-          <p className="font-mono text-lg text-text-muted">
-            Transparent pricing for quick-turn repairs. We specialize in high-margin logic board restoration for flippers and IT asset management.
-          </p>
-        </div>
+      <div className="pt-20 pb-12 border-b border-gray-900 bg-background-surface">
+        <Container>
+          <div className="max-w-3xl">
+            <div className="text-xs font-mono text-primary mb-4">ROOT / SERVICES</div>
+            <h1 className="text-4xl md:text-6xl font-sans font-bold mb-6">
+              Service Cost Matrix
+            </h1>
+            <p className="text-lg text-gray-400 font-mono">
+              Transparent pricing for every recovery protocol. We specialize in high-margin logic board repairs and bulk liquidation services.
+            </p>
+          </div>
+        </Container>
       </div>
       <PricingTable />
       <CTASection 
-        href="/contact"
-        title="Don't see your issue?"
-        description="Run a custom diagnostic."
+        title="Need a custom quote?"
+        description="Bulk lots or specific industrial equipment? Contact our engineering team directly."
       />
     </>
   );

@@ -1,33 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
-export function CTASection({ 
-  title = "Ready to restore your hardware?",
-  description = "Initiate the repair protocol today.",
-  href = "/contact",
-  className 
-}: { 
-  title?: string; 
-  description?: string; 
-  href?: string;
-  className?: string;
-}) {
+interface CTASectionProps {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  link?: string;
+}
+
+export function CTASection({
+  title = "Ready to restore your assets?",
+  description = "Initiate the recovery protocol today and turn dead stock into profit.",
+  buttonText = "Start Repair Request",
+  link = "/contact",
+}: CTASectionProps) {
   return (
-    <section className={cn("py-section border-t border-[#1a1a1a]", className)}>
-      <div className="max-w-[1440px] mx-auto px-6 text-center">
-        <h2 className="font-sans text-3xl md:text-5xl font-bold text-text mb-4">
-          {title}
-        </h2>
-        <p className="font-mono text-lg text-text-muted max-w-2xl mx-auto mb-8">
-          {description}
-        </p>
-        <Button size="lg" className="gap-2" asChild>
-          <Link href={href}>
-            Start Now <ArrowRight className="w-4 h-4" />
-          </Link>
-        </Button>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" />
+      
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="border border-primary/20 bg-background-surface/80 backdrop-blur-sm p-8 md:p-16 rounded-sm flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-4 max-w-2xl">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold">
+              {title}
+            </h2>
+            <p className="text-gray-400 font-mono text-lg">
+              {description}
+            </p>
+          </div>
+          
+          <Button variant="primary" size="lg" className="whitespace-nowrap group" asChild>
+            <a href={link}>
+              {buttonText}
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
   );

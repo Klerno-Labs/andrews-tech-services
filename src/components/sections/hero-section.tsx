@@ -1,105 +1,128 @@
 "use client";
-
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Container } from "@/components/ui/container";
 import { ArrowRight, Cpu } from "lucide-react";
+import { images } from "@/config/images";
 import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-grid-pattern pt-20">
-      {/* Background Grid Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-0" />
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-[0.03] pointer-events-none z-0" />
       
-      <div className="max-w-[1440px] mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="space-y-8"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary font-mono text-xs">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            SYSTEM_READY
-          </div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-0 pointer-events-none" />
 
-          <h1 className="font-sans text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-text">
-            Hardware Recovery <br />
-            <span className="text-primary">Protocol.</span>
-          </h1>
-
-          <p className="font-mono text-lg md:text-xl text-text-muted max-w-lg">
-            Quick-turn diagnostics and repair for bulk electronics. We restore broken equipment cheap, making it worth your time.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button size="lg" className="gap-2" asChild>
-              <Link href="/contact">
-                Initiate Request <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/inventory">Check Inventory</Link>
-            </Button>
-          </div>
+      <Container className="relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          <div className="pt-8 border-t border-[#1a1a1a]">
-            <p className="font-mono text-xs text-text-muted mb-2">CURRENT QUEUE:</p>
-            <div className="font-mono text-sm text-text">
-              Processing <span className="text-primary">500+</span> units this week.
+          {/* Text Content */}
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              SYSTEM ONLINE
             </div>
-          </div>
-        </motion.div>
-
-        {/* Visual / Schematic */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden lg:flex relative justify-center items-center"
-        >
-          {/* Abstract Terminal / Schematic representation */}
-          <div className="relative w-full h-[500px] border border-[#1a1a1a] bg-[#0A0A0A] rounded-lg p-6 overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-grid-pattern opacity-20" />
             
-            {/* Window Controls */}
-            <div className="flex gap-2 mb-6">
-              <div className="w-3 h-3 rounded-full bg-[#333] hover:bg-red-500 transition-colors cursor-pointer" />
-              <div className="w-3 h-3 rounded-full bg-[#333] hover:bg-yellow-500 transition-colors cursor-pointer" />
-              <div className="w-3 h-3 rounded-full bg-[#333] hover:bg-green-500 transition-colors cursor-pointer" />
+            <h1 className="text-5xl md:text-7xl font-sans font-bold tracking-tight leading-[1.1]">
+              Hardware<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-600">
+                Recovery
+              </span>
+              <br/>
+              Protocol
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-400 font-mono max-w-lg leading-relaxed">
+              Quick-turn diagnostics and repair for bulk electronics. Optimized for flippers and bulk liquidators. We restore value to dead assets.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button variant="primary" size="lg" className="group" asChild>
+                <a href="/contact">
+                  Initiate Repair
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <Button variant="secondary" size="lg" asChild>
+                <a href="/inventory">Check Inventory</a>
+              </Button>
             </div>
 
-            {/* Content */}
-            <div className="font-mono text-sm space-y-2 relative z-10">
-              <p className="text-text-muted">root@andrews:~$ ./scan_network.sh</p>
-              <p className="text-primary">Scanning for devices...</p>
-              <div className="space-y-1 mt-4 opacity-70">
-                <p>[+] Device: iPhone_13_Pro <span className="text-green-500">[ONLINE]</span></p>
-                <p>[+] Device: MacBook_Air_M1 <span className="text-yellow-500">[REPAIRING]</span></p>
-                <p>[+] Device: Samsung_S21 <span className="text-green-500">[DONE]</span></p>
-                <p>[+] Device: iPad_Pro_12 <span className="text-red-500">[FAILED]</span></p>
+            <div className="pt-8 border-t border-gray-800 grid grid-cols-3 gap-8">
+              <div>
+                <div className="text-3xl font-bold text-primary font-sans">500+</div>
+                <div className="text-xs text-gray-500 font-mono mt-1">Units Reclaimed</div>
               </div>
-              <div className="mt-8 flex gap-2">
-                <span className="text-primary">➜</span>
-                <span className="animate-pulse">_</span>
+              <div>
+                <div className="text-3xl font-bold text-primary font-sans">24h</div>
+                <div className="text-xs text-gray-500 font-mono mt-1">Avg Turnaround</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary font-sans">100%</div>
+                <div className="text-xs text-gray-500 font-mono mt-1">Data Wipe</div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Decoration */}
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute top-20 -left-20 w-40 h-40 bg-accent-purple/5 rounded-full blur-2xl pointer-events-none" />
+          {/* Visual Content */}
+          <motion.div 
+            className="relative hidden lg:block"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="relative rounded-sm overflow-hidden border border-gray-800 bg-background-surface shadow-2xl">
+              <Image
+                src={images.hero.src}
+                alt={images.hero.alt}
+                width={images.hero.width}
+                height={images.hero.height}
+                priority
+                className="w-full h-auto object-cover opacity-80 mix-blend-screen"
+              />
+              
+              {/* Overlay UI Elements */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="bg-background/80 backdrop-blur px-4 py-2 border-l-2 border-primary">
+                    <div className="text-xs font-mono text-primary">SCANNING...</div>
+                  </div>
+                  <Cpu className="h-8 w-8 text-primary/50" />
+                </div>
+                
+                {/* Decorative Floating Elements */}
+                <motion.div 
+                  className="absolute top-1/4 left-1/4 w-32 h-32 border border-primary/20 rounded-full flex items-center justify-center"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  <div className="w-24 h-24 border border-primary/40 rounded-full"></div>
+                </motion.div>
+
+                <div className="bg-background/90 backdrop-blur-sm border border-gray-700 p-4 font-mono text-xs text-gray-400 max-w-xs">
+                  > DETECTED: iPhone 12 Pro Max<br/>
+                  > BATTERY HEALTH: 84%<br/>
+                  > IC CLOUD: LOCKED<br/>
+                  > STATUS: READY FOR RECOVERY
+                </div>
+              </div>
+            </div>
             
-            {/* Icon */}
-            <div className="absolute bottom-10 right-10 bg-[#030303] border border-[#1a1a1a] p-4 rounded-lg">
-              <Cpu className="w-8 h-8 text-primary" />
-            </div>
-          </div>
-        </motion.div>
-      </div>
+            {/* Background Glow */}
+            <div className="absolute -inset-4 bg-primary/10 blur-3xl -z-10 rounded-full" />
+          </motion.div>
+        </div>
+      </Container>
     </section>
   );
 }

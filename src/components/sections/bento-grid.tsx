@@ -1,103 +1,97 @@
 "use client";
-
+import { Container } from "@/components/ui/container";
+import { Badge } from "@/components/ui/badge";
+import { images } from "@/config/images";
+import { Image as ImageIcon, Zap, Shield, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Cpu, Smartphone, HardDrive, Activity } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
 
 const features = [
   {
     title: "Board Level Repair",
-    description: "Microsoldering and logic board diagnostics for complex hardware failures.",
-    icon: <Cpu className="w-6 h-6" />,
-    span: "col-span-1 lg:col-span-2",
-    link: "/services",
+    description: "Microsoldering and logic board diagnostics. We fix what others call 'unfixable'. High margin recovery for water damage and short circuits.",
+    icon: <Cpu className="h-6 w-6" />,
+    span: "col-span-1 md:col-span-2",
+    imageSlot: "service-1" as const,
   },
   {
     title: "Screen Replacement",
-    description: "High-quality LCD/OLED swaps for phones, tablets, and laptops.",
-    icon: <Smartphone className="w-6 h-6" />,
+    description: "Premium OEM quality glass and LCD swaps for phones and tablets. Bulk discounts available for lots of 10+.",
+    icon: <ImageIcon className="h-6 w-6" />,
     span: "col-span-1",
-    link: "/services",
+    imageSlot: "service-2" as const,
   },
   {
-    title: "Bulk Data Erasure",
-    description: "Secure NIST 800-88 compliant wiping for enterprise fleet turnover.",
-    icon: <HardDrive className="w-6 h-6" />,
+    title: "Bulk Erasure",
+    description: "NIST 800-88 compliant data sanitization. Certificates provided for every batch. Secure and compliant.",
+    icon: <Shield className="h-6 w-6" />,
     span: "col-span-1",
-    link: "/services",
+    imageSlot: null,
   },
   {
-    title: "Diagnostics",
-    description: "Full system analysis to pinpoint exact failure points before repair.",
-    icon: <Activity className="w-6 h-6" />,
-    span: "col-span-1 lg:col-span-2",
-    link: "/services",
+    title: "Rapid Diagnostics",
+    description: "Automated testing suites identify faults in minutes. Detailed reports provided for every asset.",
+    icon: <Zap className="h-6 w-6" />,
+    span: "col-span-1 md:col-span-2",
+    imageSlot: "service-3" as const,
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export function BentoGrid() {
   return (
-    <section className="py-section bg-background">
-      <div className="max-w-[1440px] mx-auto px-6">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+    <section className="py-24 bg-background-surface border-y border-gray-900">
+      <Container>
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className={cn(
-                "group relative bg-[#0A0A0A] border border-[#1a1a1a] p-6 hover:border-primary transition-colors duration-300 overflow-hidden",
-                feature.span
-              )}
-            >
-              <Link href={feature.link} className="absolute inset-0 z-10">
-                <span className="sr-only">View {feature.title}</span>
-              </Link>
-              
-              {/* Scanline effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000 z-0" />
+          <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">Service Modules</h2>
+          <p className="text-gray-400 font-mono max-w-2xl">
+            Select a recovery protocol to begin. Our systems are optimized for volume processing and high-yield restoration.
+          </p>
+        </motion.div>
 
-              <div className="relative z-20 h-full flex flex-col">
-                <div className="w-12 h-12 bg-[#030303] border border-[#008F11] flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-black transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={feature.title}
+              className={feature.span}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="h-full bg-background border border-gray-800 p-8 hover:border-primary/50 transition-all duration-300 group relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="text-primary font-mono text-xs">[ACTIVE]</div>
+                </div>
+                
+                <div className="mb-6 text-primary bg-primary/5 w-fit p-3 rounded-sm">
                   {feature.icon}
                 </div>
-                <h3 className="font-sans text-xl font-bold text-text mb-2 group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="font-mono text-sm text-text-muted leading-relaxed">
+                
+                <h3 className="text-xl font-sans font-bold mb-3">{feature.title}</h3>
+                <p className="text-sm text-gray-400 font-mono leading-relaxed mb-6">
                   {feature.description}
                 </p>
-                
-                {/* Corner Bracket */}
-                <div className="mt-auto pt-6 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="font-mono text-xs text-primary">[ACCESS]</span>
-                </div>
+
+                {feature.imageSlot && (
+                  <div className="mt-4 relative h-32 w-full overflow-hidden rounded-sm border border-gray-800">
+                    <Image 
+                      src={images[feature.imageSlot].src}
+                      alt={images[feature.imageSlot].alt}
+                      fill
+                      className="object-cover opacity-60 group-hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

@@ -1,63 +1,67 @@
-import { services } from "@/lib/data";
+"use client";
+import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
+import { servicesData } from "@/lib/data";
+import { formatCurrency } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export function PricingTable() {
   return (
-    <div className="max-w-[1440px] mx-auto px-6 py-section">
-      <div className="mb-12">
-        <h2 className="font-sans text-4xl font-bold text-text mb-4">Service Cost Matrix</h2>
-        <p className="font-mono text-text-muted">Standardized pricing for flippers and IT managers.</p>
-      </div>
-
-      <div className="overflow-x-auto border border-[#1a1a1a] rounded-lg">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-[#0A0A0A] border-b border-[#1a1a1a]">
-              <th className="p-4 font-mono text-xs uppercase tracking-widest text-text-muted">Device</th>
-              <th className="p-4 font-mono text-xs uppercase tracking-widest text-text-muted">Issue</th>
-              <th className="p-4 font-mono text-xs uppercase tracking-widest text-text-muted">Category</th>
-              <th className="p-4 font-mono text-xs uppercase tracking-widest text-text-muted text-right">Turnaround</th>
-              <th className="p-4 font-mono text-xs uppercase tracking-widest text-text-muted text-right">Price</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#1a1a1a] bg-background">
-            {services.map((service) => (
-              <tr 
-                key={service.id} 
-                className={cn(
-                  "hover:bg-[#050505] transition-colors group",
-                  service.margin && "border-l-2 border-l-primary"
-                )}
-              >
-                <td className="p-4 font-sans font-medium text-text group-hover:text-primary transition-colors">
-                  {service.device}
-                </td>
-                <td className="p-4 font-mono text-sm text-text-muted">
-                  {service.issue}
-                </td>
-                <td className="p-4">
-                  <Badge variant="default" className="text-[10px] px-1.5 py-0.5">
-                    {service.category.toUpperCase()}
-                  </Badge>
-                </td>
-                <td className="p-4 font-mono text-sm text-right text-text-muted">
-                  {service.turnaround}
-                </td>
-                <td className="p-4 font-mono text-sm text-right font-bold text-primary">
-                  ${service.price}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      
-      <div className="mt-4 flex items-center gap-4 font-mono text-xs text-text-muted">
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 border-l-2 border-primary"></span>
-          <span>High Margin Repair (Best for Flippers)</span>
+    <section className="py-24">
+      <Container>
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">Service Cost Matrix</h2>
+          <p className="text-gray-400 font-mono">Standard pricing for bulk recovery operations.</p>
         </div>
-      </div>
-    </div>
+
+        <div className="overflow-x-auto border border-gray-800 rounded-sm">
+          <table className="w-full text-left">
+            <thead className="bg-background-surface">
+              <tr>
+                <th className="p-4 font-mono text-xs text-gray-500 tracking-wider uppercase">Device</th>
+                <th className="p-4 font-mono text-xs text-gray-500 tracking-wider uppercase">Issue</th>
+                <th className="p-4 font-mono text-xs text-gray-500 tracking-wider uppercase text-right">Cost</th>
+                <th className="p-4 font-mono text-xs text-gray-500 tracking-wider uppercase">Turnaround</th>
+                <th className="p-4 font-mono text-xs text-gray-500 tracking-wider uppercase">Margin</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-900">
+              {servicesData.map((service, idx) => (
+                <motion.tr
+                  key={service.id}
+                  className="hover:bg-background-surface/50 transition-colors group"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                >
+                  <td className="p-4 text-sm font-medium text-gray-200">{service.device}</td>
+                  <td className="p-4 text-sm text-gray-400 font-mono">{service.issue}</td>
+                  <td className="p-4 text-sm text-primary font-mono text-right font-bold">
+                    {formatCurrency(service.price)}
+                  </td>
+                  <td className="p-4 text-sm text-gray-400 font-mono">
+                    {service.turnaround}
+                  </td>
+                  <td className="p-4 text-right">
+                    {service.margin === "high" ? (
+                      <Badge variant="gradeA">High Yield</Badge>
+                    ) : (
+                      <Badge variant="outline">Standard</Badge>
+                    )}
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        
+        <div className="mt-6 flex justify-center">
+          <p className="text-xs font-mono text-gray-500">
+            * Volume discounts available for orders over 50 units. Contact for bulk pricing.
+          </p>
+        </div>
+      </Container>
+    </section>
   );
 }

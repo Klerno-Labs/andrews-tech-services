@@ -1,33 +1,34 @@
-import { Metadata } from "next";
 import { InventoryGrid } from "@/components/sections/inventory-grid";
 import { CTASection } from "@/components/sections/cta-section";
+import { Container } from "@/components/ui/container";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Bulk Inventory",
-  description: "Refurbished devices and parts ready for immediate deployment.",
+  description: "Browse available refurbished assets ready for resale.",
 };
 
 export default function InventoryPage() {
   return (
     <>
-      <div className="py-section max-w-[1440px] mx-auto px-6 border-b border-[#1a1a1a]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="font-mono text-primary text-sm mb-2 block">ROOT / ASSETS</span>
-            <h1 className="font-sans text-4xl md:text-5xl font-bold text-text mb-6">
+      <div className="pt-20 pb-12 border-b border-gray-900 bg-background-surface">
+        <Container>
+          <div className="max-w-3xl">
+            <div className="text-xs font-mono text-primary mb-4">ROOT / INVENTORY</div>
+            <h1 className="text-4xl md:text-6xl font-sans font-bold mb-6">
               Available Assets
             </h1>
-            <p className="font-mono text-lg text-text-muted max-w-xl">
-              Grade A, B, and C refurbished units. Tested, cleaned, and ready for resale or internal deployment.
+            <p className="text-lg text-gray-400 font-mono">
+              Tested and certified units ready for immediate shipment. Filter by category to find the hardware you need.
             </p>
           </div>
-        </div>
+        </Container>
       </div>
       <InventoryGrid />
       <CTASection 
-        href="/contact"
-        title="Looking for a specific model?"
-        description="Join our waitlist for incoming inventory."
+        title="Looking for specific bulk lots?"
+        description="We source devices directly from enterprise returns. Set up a buying alert."
+        buttonText="Contact Sourcing"
       />
     </>
   );

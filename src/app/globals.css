@@ -17,7 +17,6 @@ body {
     )
     rgb(var(--background-start-rgb));
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
@@ -29,19 +28,15 @@ body {
   background: #030303;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border-radius: 4px;
+  background: #333;
+  border: 1px solid #00FF41;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #008F11;
+  background: #00FF41;
 }
 
-/* Scanline Effect */
-.scanline {
-  position: relative;
-  overflow: hidden;
-}
-.scanline::after {
+/* Scanline Overlay Utility */
+.scanlines::before {
   content: " ";
   display: block;
   position: absolute;
@@ -49,55 +44,23 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.25) 50%
-  );
-  background-size: 100% 4px;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 2;
+  background-size: 100% 2px, 3px 100%;
   pointer-events: none;
 }
 
-/* Glitch Text Effect */
-.glitch-text {
-  position: relative;
-}
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #030303;
-}
-.glitch-text::before {
-  left: 2px;
-  text-shadow: -1px 0 #ff00c1;
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-.glitch-text::after {
-  left: -2px;
-  text-shadow: -1px 0 #00fff9;
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim2 5s infinite linear alternate-reverse;
-}
-@keyframes glitch-anim {
-  0% { clip: rect(31px, 9999px, 94px, 0); }
-  4.166666667% { clip: rect(91px, 9999px, 43px, 0); }
-  /* ... truncated for brevity, simplified implementation */
-  100% { clip: rect(67px, 9999px, 89px, 0); }
-}
-@keyframes glitch-anim2 {
-  0% { clip: rect(65px, 9999px, 93px, 0); }
-  4.166666667% { clip: rect(6px, 9999px, 86px, 0); }
-  100% { clip: rect(23px, 9999px, 16px, 0); }
+/* Typing Cursor */
+.cursor::after {
+  content: "▋";
+  display: inline-block;
+  margin-left: 2px;
+  color: #00FF41;
+  animation: blink 1s step-end infinite;
 }
 
-/* Utility for background grid size */
-.bg-grid-size {
-  background-size: 40px 40px;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
+--- END FILE -->

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono, Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -16,18 +16,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Andrew's Tech Services | Hardware Recovery Protocol",
-  description: "Quick-turn diagnostics and board-level repair for bulk electronics. We restore value to your broken inventory efficiently.",
+  description: "Quick-turn diagnostics and repair for bulk electronics. The standard for hardware flipping and restoration.",
+  keywords: ["tech repair", "android repair", "apple repair", "bulk electronics", "flipping", "hardware services"],
   openGraph: {
     title: "Andrew's Tech Services",
-    description: "Quick-turn diagnostics and board-level repair for bulk electronics.",
+    description: "Hardware Recovery Protocol",
     type: "website",
   },
 };
@@ -39,15 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable} font-sans antialiased selection:bg-primary/30 selection:text-text`}
-      >
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-void text-text-main selection:bg-terminal-green selection:text-black`}>
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen pt-24">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+--- END FILE -->

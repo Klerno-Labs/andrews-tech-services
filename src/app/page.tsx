@@ -1,121 +1,136 @@
-import Hero from "@/components/Hero";
-import LogTicker from "@/components/LogTicker";
-import ServiceCard, { ServiceCardProps } from "@/components/ServiceCard";
-import PricingTable from "@/components/PricingTable";
-import TerminalContact from "@/components/TerminalContact";
-import { Smartphone, Cpu, HardDrive, Shield, Wrench, Monitor } from "lucide-react";
-import { images } from "@/config/images";
+"use client";
 
-const services: ServiceCardProps[] = [
-  {
-    title: "Logic Board Repair",
-    description: "Chip-level microsoldering for water damage and short circuits. High-margin repairs for advanced flippers.",
-    icon: Cpu,
-    span: "md:col-span-2",
-    delay: 100,
-  },
-  {
-    title: "Screen Replacement",
-    description: "OLED and LCD replacements for phones and tablets. Quick 1-hour turnaround for bulk orders.",
-    icon: Smartphone,
-    delay: 200,
-  },
-  {
-    title: "Battery Services",
-    description: "Internal battery replacement and health optimization. Restores device longevity and resale value.",
-    icon: HardDrive,
-    delay: 300,
-  },
-  {
-    title: "Bulk Data Wiping",
-    description: "DoD 5220.22-M compliant erasure for large lots. Safe, certified, and documented for compliance.",
-    icon: Shield,
-    delay: 400,
-  },
-  {
-    title: "Diagnostic Triaging",
-    description: "Rapid testing of pallet returns to separate salvageable units from parts-only stock.",
-    icon: Wrench,
-    delay: 500,
-  },
-  {
-    title: "Housing & Refurb",
-    description: "Cosmetic restoration including chassis replacement, polishing, and detailing.",
-    icon: Monitor,
-    span: "md:col-span-2",
-    delay: 600,
-  },
-];
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Cpu, Smartphone, HardDrive, Zap } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { BentoCard } from "@/components/BentoCard";
+import { Ticker } from "@/components/Ticker";
+import { TerminalWindow } from "@/components/TerminalWindow";
+import { images } from "@/config/images";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <LogTicker />
-      
-      {/* Services Section */}
-      <section id="services" className="py-24 px-4 bg-background relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+    <div className="animate-fade-up">
+      {/* Hero Section */}
+      <section className="min-h-[calc(100vh-6rem)] flex items-center relative overflow-hidden">
+        {/* Background Grid */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-[0.15] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto mb-12 text-center">
-          <span className="font-mono text-xs text-primary tracking-widest uppercase mb-2 block">Modules</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-4 tracking-tight">Service Protocols</h2>
-          <p className="text-muted max-w-2xl mx-auto font-mono text-sm">
-            Select a recovery operation. Our technicians are certified in iOS, Android, and Windows board architecture.
-          </p>
-        </div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
-          ))}
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 px-4 bg-background-surface border-y border-border">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12 items-start">
+        <div className="max-w-[1440px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-terminal-dim rounded-full bg-terminal-green/5">
+              <span className="w-2 h-2 bg-terminal-green rounded-full animate-pulse" />
+              <span className="font-mono text-xs text-terminal-green uppercase tracking-widest">System Online</span>
+            </div>
             
-            <div className="lg:col-span-1">
-              <span className="font-mono text-xs text-primary tracking-widest uppercase mb-2 block">Cost Matrix</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-text mb-6 tracking-tight">Service Rates</h2>
-              <p className="text-muted font-mono text-sm leading-relaxed mb-8">
-                Transparent pricing for high-volume partners. Bulk discounts apply for orders over 50 units. All repairs include a 90-day warranty on workmanship.
-              </p>
-              <div className="bg-background p-6 border border-primary/20 rounded-sm">
-                <h4 className="text-primary font-mono text-sm font-bold mb-2">PARTNER PROGRAM</h4>
-                <p className="text-xs text-muted mb-4">Join our flipper network for reduced rates and priority processing.</p>
-                <a href="#contact" className="block w-full text-center py-2 bg-primary text-black font-mono text-xs font-bold uppercase hover:bg-white transition-colors">
-                  Apply for Access
-                </a>
-              </div>
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
+              Hardware Recovery <br />
+              <span className="text-terminal-green cursor">Protocol</span>
+            </h1>
+            
+            <p className="font-mono text-muted text-lg max-w-xl leading-relaxed">
+              Quick-turn diagnostics and board-level repair for bulk electronics. 
+              Optimized for flippers requiring precision turnaround times.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link href="/contact">
+                <Button variant="primary" className="w-full sm:w-auto text-base">
+                  Initiate Repair Request
+                </Button>
+              </Link>
+              <Link href="/inventory">
+                <Button variant="secondary" className="w-full sm:w-auto text-base">
+                  Check Available Assets
+                </Button>
+              </Link>
             </div>
 
-            <div className="lg:col-span-2">
-              <PricingTable />
+            <div className="font-mono text-xs text-muted pt-8 border-t border-[#1a1a1a]">
+              > SUPPORTED ARCHITECTURES: iOS, ANDROID, WINDOWS NT
             </div>
+          </div>
+
+          {/* Visual */}
+          <div className="relative hidden lg:block h-[600px] w-full">
+            <div className="absolute inset-0 bg-terminal-green/5 rounded-lg border border-terminal-green/20 flex items-center justify-center">
+               <Image
+                src={images.hero.src}
+                alt={images.hero.alt}
+                width={images.hero.width}
+                height={images.hero.height}
+                className="w-full h-full object-cover opacity-60"
+                priority
+              />
+            </div>
+            {/* Decorative Elements */}
+            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-terminal-green/10 blur-[100px]" />
+            <div className="absolute top-10 -left-10 w-64 h-64 bg-terminal-green/10 blur-[100px]" />
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-4 bg-background relative">
-        {/* Background Decoration */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
-        
-        <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-          <span className="font-mono text-xs text-primary tracking-widest uppercase mb-2 block">Communication</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-4 tracking-tight">Initiate Contact</h2>
-          <p className="text-muted font-mono text-sm max-w-xl mx-auto">
-            Submit your hardware specifications below. Include device model, quantity, and observed defects.
-          </p>
+      {/* System Status Ticker */}
+      <Ticker />
+
+      {/* Services Modules (Bento Grid) */}
+      <section className="py-24 max-w-[1440px] mx-auto px-6">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Service Modules</h2>
+          <p className="font-mono text-muted">Select protocol to begin.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto relative z-10">
-          <TerminalContact />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <BentoCard
+            span="span-2"
+            icon={Cpu}
+            title="Logic Board Repair"
+            description="Advanced microsoldering for water damage and short circuits. Tracing faults to the component level."
+          />
+          <BentoCard
+            span="span-1"
+            icon={Smartphone}
+            title="Screen Replacement"
+            description="OLED/LCD refurbishment and glass-only delamination. Grade A++ quality assurance."
+          />
+          <BentoCard
+            span="span-1"
+            icon={HardDrive}
+            title="Bulk Erasure"
+            description="DoD 5220.22-M compliant data sanitization for fleet turnover. Certificate provided."
+          />
+          <BentoCard
+            span="span-2"
+            icon={Zap}
+            title="Diagnostics & Triage"
+            description="Rapid assessment service for bulk lots. Identifies repairable vs. parts-only units efficiently."
+          />
         </div>
       </section>
-    </>
+
+      {/* CTA Section */}
+      <section className="py-24 border-y border-[#1a1a1a] relative overflow-hidden">
+        <div className="absolute inset-0 bg-terminal-green/5" />
+        <div className="max-w-[1440px] mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+          <TerminalWindow className="max-w-3xl w-full mb-8">
+            <p>> user@flipper:~$ check_profits</p>
+            <p className="text-terminal-green">> Calculating potential margin...</p>
+            <p>> Result: HIGH</p>
+            <p>> user@flipper:~$ run_andrews_tech_repair</p>
+            <p className="animate-cursor">&nbsp;</p>
+          </TerminalWindow>
+          <h2 className="text-4xl font-bold mb-6">Ready to Flip?</h2>
+          <Link href="/contact">
+            <Button variant="primary" size="lg">
+              Submit Batch for Diagnostic
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }
+--- END FILE -->

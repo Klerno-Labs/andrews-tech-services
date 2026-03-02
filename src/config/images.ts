@@ -1,44 +1,109 @@
 // ── Image Configuration ──────────────────────────────────────────────
-// All components import from this file.
-// Current assets are high-quality SVG placeholders generated for performance.
+// ✏️  HOW TO CHANGE IMAGES:
+// 1. Find the slot you want to change below (e.g. "hero", "about", "service-1")
+// 2. Replace the "src" URL with your own image URL
+// 3. Update the "alt" text to describe the new image
+// 4. Save — every component on the site updates automatically
+//
+// All components import from this file. This is the ONLY file you need
+// to edit to swap any image on the entire website.
 
 export const images = {
-  hero: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22800%22%20viewBox%3D%220%200%201200%20800%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3A%230a0a0a%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3A%23111111%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20fill%3D%22url(%23g)%22%20width%3D%221200%22%20height%3D%22800%22%2F%3E%3Cpath%20d%3D%22M0%20400%20L1200%20400%22%20stroke%3D%22%2300FF41%22%20stroke-width%3D%221%22%20opacity%3D%220.1%22%2F%3E%3Cpath%20d%3D%22M600%200%20L600%20800%22%20stroke%3D%22%2300FF41%22%20stroke-width%3D%221%22%20opacity%3D%220.1%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22400%22%20r%3D%22150%22%20stroke%3D%22%2300FF41%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20opacity%3D%220.2%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22410%22%20font-family%3D%22monospace%22%20font-size%3D%2220%22%20fill%3D%22%2300FF41%22%20text-anchor%3D%22middle%22%20opacity%3D%220.5%22%3EANDREWS_TECH_SYS schematic_v1.0%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Technical schematic of a motherboard",
+  // Homepage hero banner — the first image visitors see
+  "hero": {
+    src: "https://placehold.co/1200x800/030303/00FF41?text=ANDREWS_TECH//SYSTEM_READY",
+    alt: "Hero schematic: Hardware recovery protocol",
     width: 1200,
     height: 800,
   },
-  service1: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22400%22%20viewBox%3D%220%200%20600%20400%22%3E%3Crect%20fill%3D%22%23050505%22%20width%3D%22600%22%20height%3D%22400%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%22%20font-size%3D%2224%22%20fill%3D%22%2300FF41%22%3E%3C_BOARD_REPAIR_%3E%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Logic board repair",
-    width: 600,
-    height: 400,
-  },
-  service2: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22400%22%20viewBox%3D%220%200%20600%20400%22%3E%3Crect%20fill%3D%22%23050505%22%20width%3D%22600%22%20height%3D%22400%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%22%20font-size%3D%2224%22%20fill%3D%22%2300FF41%22%3E%3C_SCREEN_REPLACE_%3E%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Screen replacement service",
-    width: 600,
-    height: 400,
-  },
-  service3: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22400%22%20viewBox%3D%220%200%20600%20400%22%3E%3Crect%20fill%3D%22%23050505%22%20width%3D%22600%22%20height%3D%22400%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%22%20font-size%3D%2224%22%20fill%3D%22%2300FF41%22%3E%3C_BULK_ERASE_%3E%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Bulk data erasure",
-    width: 600,
-    height: 400,
-  },
-  product: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%3Crect%20fill%3D%22%23050505%22%20width%3D%22400%22%20height%3D%22400%22%2F%3E%3Crect%20x%3D%22100%22%20y%3D%2250%22%20width%3D%22200%22%20height%3D%22300%22%20rx%3D%2220%22%20stroke%3D%22%23333%22%20stroke-width%3D%222%22%20fill%3D%22none%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%22200%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%22%20font-size%3D%2216%22%20fill%3D%22%23666%22%3EDEVICE_IMG%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Device placeholder",
-    width: 400,
-    height: 400,
-  },
-  cta: {
-    src: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22600%22%20viewBox%3D%220%200%201200%20600%22%3E%3Crect%20fill%3D%22%23000%22%20width%3D%221200%22%20height%3D%22600%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22300%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%22%20font-size%3D%2232%22%20fill%3D%22%23111%22%3EINITIALIZE_PROTOCOL%3C%2Ftext%3E%3C%2Fsvg%3E",
-    alt: "Abstract terminal background",
+
+  // Alternative hero image (used on inner pages or as fallback)
+  "hero-alt": {
+    src: "https://placehold.co/1200x800/030303/008F11?text=DIAGNOSTIC_MODE",
+    alt: "Diagnostic interface visual",
     width: 1200,
-    height: 600,
-  }
+    height: 800,
+  },
+
+  // About page or About section on homepage
+  "about": {
+    src: "https://placehold.co/1200x800/0A0A0A/EDEDED?text=TECHNICAL_OPS_CENTER",
+    alt: "Technical operations center workspace",
+    width: 1200,
+    height: 800,
+  },
+
+  // First service card image
+  "service-1": {
+    src: "https://placehold.co/600x400/030303/00FF41?text=BOARD_REPAIR",
+    alt: "Microsoldering logic board repair",
+    width: 600,
+    height: 400,
+  },
+
+  // Second service card image
+  "service-2": {
+    src: "https://placehold.co/600x400/030303/00FF41?text=SCREEN_REPLACE",
+    alt: "Mobile screen replacement process",
+    width: 600,
+    height: 400,
+  },
+
+  // Third service card image
+  "service-3": {
+    src: "https://placehold.co/600x400/030303/00FF41?text=BULK_ERASURE",
+    alt: "Bulk data erasure station",
+    width: 600,
+    height: 400,
+  },
+
+  // Gallery image 1
+  "gallery-1": {
+    src: "https://placehold.co/600x400/0A0A0A/EDEDED?text=INVENTORY_A",
+    alt: "Grade A inventory lot",
+    width: 600,
+    height: 400,
+  },
+
+  // Gallery image 2
+  "gallery-2": {
+    src: "https://placehold.co/600x400/0A0A0A/EDEDED?text=INVENTORY_B",
+    alt: "Grade B inventory lot",
+    width: 600,
+    height: 400,
+  },
+
+  // Team member photo
+  "team-1": {
+    src: "https://placehold.co/600x400/030303/00FF41?text=LEAD_TECH",
+    alt: "Lead technician portrait",
+    width: 600,
+    height: 400,
+  },
+
+  // Gallery image 3
+  "gallery-3": {
+    src: "https://placehold.co/600x400/0A0A0A/EDEDED?text=WORKSHOP",
+    alt: "Electronics repair workshop",
+    width: 600,
+    height: 400,
+  },
+
+  // Call-to-action section background
+  "cta": {
+    src: "https://placehold.co/1200x800/030303/00FF41?text=INITIATE_REPAIR",
+    alt: "Call to action background",
+    width: 1200,
+    height: 800,
+  },
+
+  // Testimonials section background or decoration
+  "testimonial-bg": {
+    src: "https://placehold.co/1200x800/0A0A0A/EDEDED?text=CLIENT_LOGS",
+    alt: "Client testimonials background",
+    width: 1200,
+    height: 800,
+  },
 } as const;
 
 export type ImageSlot = keyof typeof images;

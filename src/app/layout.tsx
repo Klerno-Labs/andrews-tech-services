@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -16,13 +15,29 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Andrew's Tech Services | Hardware Recovery Protocol",
-  description: "Quick-turn diagnostics and repair for bulk electronics. The standard for hardware flipping and restoration.",
-  keywords: ["tech repair", "android repair", "apple repair", "bulk electronics", "flipping", "hardware services"],
+  title: "Andrew's Tech Services | Hardware Recovery & Restoration",
+  description: "Quick-turn diagnostics and repair for bulk electronics. Android, Apple, and Windows restoration services for flippers.",
   openGraph: {
-    title: "Andrew's Tech Services",
-    description: "Hardware Recovery Protocol",
+    title: "Andrew's Tech Services | Hardware Recovery",
+    description: "Professional electronics rebuilding and restoration. Serving flippers and businesses with hacker-grade efficiency.",
+    url: "https://andrewstech.com",
+    siteName: "Andrew's Tech Services",
+    images: [
+      {
+        url: "https://placehold.co/1200x630/030303/00FF41?text=ANDREWS_TECH_OG",
+        width: 1200,
+        height: 630,
+        alt: "Andrew's Tech Services Open Graph",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
 };
@@ -33,13 +48,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-void text-text-main selection:bg-terminal-green selection:text-black`}>
-        <Navbar />
-        <main className="min-h-screen pt-24">{children}</main>
-        <Footer />
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable} bg-terminal-bg text-terminal-text selection:bg-terminal-primary selection:text-black`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className="antialiased font-mono">
+        {/* JSON-LD Structured Data */}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Andrew's Tech Services",
+              "image": "https://placehold.co/1200x630/030303/00FF41?text=ANDREWS_TECH_OG",
+              "description": "Quick-turn diagnostics and repair for bulk electronics. Android, Apple, and Windows restoration.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "[ADDRESS]",
+                "addressLocality": "[CITY]",
+                "addressRegion": "[STATE]",
+                "postalCode": "[ZIP]",
+                "addressCountry": "US",
+              },
+              "priceRange": "$$",
+              "telephone": "[PHONE]",
+            }),
+          }}
+        />
+        {children}
       </body>
     </html>
   );
 }
---- END FILE -->

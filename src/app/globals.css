@@ -28,39 +28,18 @@ body {
   background: #030303;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border: 1px solid #00FF41;
+  background: #1a1a1a;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00FF41;
+  background: #008F11;
 }
 
-/* Scanline Overlay Utility */
-.scanlines::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 2;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
+/* Utility classes */
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
-/* Typing Cursor */
-.cursor::after {
-  content: "▋";
-  display: inline-block;
-  margin-left: 2px;
-  color: #00FF41;
-  animation: blink 1s step-end infinite;
+.border-gradient {
+  border-image: linear-gradient(to right, #00FF41, #008F11) 1;
 }
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
---- END FILE -->

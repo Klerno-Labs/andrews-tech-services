@@ -1,34 +1,31 @@
-import * as React from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost";
+  children: React.ReactNode;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", ...props }, ref) => {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = "primary", children, ...props }, ref) => {
+    const baseStyles = "font-sans font-bold py-3 px-8 transition-all duration-300 text-sm tracking-wider uppercase";
+    
+    const variants = {
+      primary: "bg-terminal-primary text-black hover:bg-terminal-secondary hover:shadow-[0_0_15px_rgba(0,255,65,0.4)] border border-transparent",
+      secondary: "bg-transparent border border-terminal-primary text-terminal-primary hover:bg-terminal-primary hover:text-black",
+      ghost: "text-terminal-muted hover:text-terminal-text underline decoration-terminal-border hover:decoration-terminal-primary underline-offset-4",
+    };
+
     return (
       <button
-        className={cn(
-          "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-terminal-green disabled:pointer-events-none disabled:opacity-50",
-          {
-            "bg-terminal-green text-black hover:bg-terminal-dim shadow-[0_0_10px_rgba(0,255,65,0.3)] hover:shadow-[0_0_20px_rgba(0,255,65,0.5)] py-3 px-8 font-bold":
-              variant === "primary",
-            "border border-terminal-green text-terminal-green hover:bg-terminal-green/10 py-3 px-8":
-              variant === "secondary",
-            "text-muted hover:text-text-main underline decoration-muted hover:decoration-terminal-green underline-offset-4":
-              variant === "ghost",
-          },
-          className
-        )}
         ref={ref}
+        className={cn(baseStyles, variants[variant], className)}
         {...props}
-      />
+      >
+        {children}
+      </button>
     );
   }
 );
-Button.displayName = "Button";
 
-export { Button };
---- END FILE -->
+Button.displayName = "Button";

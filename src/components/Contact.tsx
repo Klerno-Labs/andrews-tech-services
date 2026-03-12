@@ -7,7 +7,7 @@ import { Send, Check } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Contact = () => {
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<&quot;idle" | "loading" | "success">("idle");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ export const Contact = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-terminal-text mb-2 font-sans">Transmission Received</h3>
                 <p className="font-mono text-terminal-muted">We will establish connection within 24 hours.</p>
-                <button onClick={() => setStatus("idle")} className="mt-8 text-xs font-mono text-terminal-primary underline underline-offset-4 hover:text-terminal-secondary">
+                <button onClick={() => setStatus(&quot;idle")} className="mt-8 text-xs font-mono text-terminal-primary underline underline-offset-4 hover:text-terminal-secondary">
                   Send new transmission
                 </button>
               </motion.div>

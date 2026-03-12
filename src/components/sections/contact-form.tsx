@@ -7,7 +7,7 @@ import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(&quot;idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,7 +52,7 @@ export function ContactForm() {
             <p className="text-gray-400 font-mono max-w-sm">
               Your repair request has been logged in the queue. A technician will analyze your protocol and contact you shortly.
             </p>
-            <Button variant="outline" onClick={() => setStatus("idle")} className="mt-4">
+            <Button variant="outline" onClick={() => setStatus(&quot;idle")} className="mt-4">
               Send Another
             </Button>
           </div>
@@ -112,7 +112,7 @@ export function ContactForm() {
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> PROCESSING...
                 </>
               ) : (
-                "EXECUTE REQUEST >"
+                &quot;EXECUTE REQUEST >"
               )}
             </Button>
             

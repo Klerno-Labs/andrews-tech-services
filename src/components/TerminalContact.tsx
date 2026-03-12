@@ -5,7 +5,7 @@ import { Send, Loader2, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function TerminalContact() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">(&quot;idle");
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +45,7 @@ export default function TerminalContact() {
               A technician will respond via encrypted channel shortly.
             </p>
             <button 
-              onClick={() => setStatus("idle")}
+              onClick={() => setStatus(&quot;idle")}
               className="mt-4 text-xs underline underline-offset-4 text-muted hover:text-primary"
             >
               Send another transmission
@@ -60,7 +60,7 @@ export default function TerminalContact() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a]"
+                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a]&quot;
                 placeholder="ENTER_NAME"
               />
             </div>
@@ -72,7 +72,7 @@ export default function TerminalContact() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a]"
+                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a]&quot;
                 placeholder="ENTER_EMAIL"
               />
             </div>
@@ -84,7 +84,7 @@ export default function TerminalContact() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a] resize-none"
+                className="w-full bg-transparent border-b border-border py-2 text-text focus:border-primary focus:outline-none transition-colors placeholder-[#1a1a1a] resize-none&quot;
                 placeholder="ENTER_MESSAGE_DETAILS..."
               />
             </div>

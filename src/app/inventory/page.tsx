@@ -75,7 +75,7 @@ export default function InventoryPage() {
                 GRADE_{item.grade}
               </div>
               <Image
-                src={images.product.src}
+                src={(images as Record<string, string>).product ?? "/placeholder.jpg".src}
                 alt={item.model}
                 width={400}
                 height={400}

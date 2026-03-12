@@ -14,7 +14,7 @@ export default function PricingTable() {
       <table className="w-full text-left border-collapse min-w-[600px]">
         <thead>
           <tr className="border-b border-border bg-background/50">
-            {[&quot;DEVICE TYPE", "ISSUE", "BASE PRICE", "TURNAROUND"].map((header) => (
+            {["DEVICE TYPE", "ISSUE", "BASE PRICE", "TURNAROUND"].map((header) => (
               <th
                 key={header}
                 className="py-4 px-6 text-xs font-mono font-bold uppercase tracking-widest text-muted"

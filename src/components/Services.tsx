@@ -9,28 +9,28 @@ const services = [
     title: "Board Repair",
     description: "Microsoldering and logic board diagnostics. Tracing shorts and replacing ICs with precision.",
     icon: <Cpu className="w-6 h-6" />,
-    span: &quot;md:col-span-2",
+    span: "md:col-span-2",
     image: "service-1",
   },
   {
     title: "Screen Replacement",
     description: "OEM and aftermarket LCD/OLED swaps for iPhone, Samsung, and iPad devices.",
     icon: <Smartphone className="w-6 h-6" />,
-    span: &quot;md:col-span-1",
+    span: "md:col-span-1",
     image: "service-2",
   },
   {
     title: "Bulk Erasure",
     description: "Secure data wiping for corporate lots and trade-ins. Certificates provided.",
     icon: <HardDrive className="w-6 h-6" />,
-    span: &quot;md:col-span-1",
+    span: "md:col-span-1",
     image: "service-3",
   },
   {
     title: "Diagnostics",
     description: "Comprehensive health checks and fluid detection analysis before purchase.",
     icon: <Zap className="w-6 h-6" />,
-    span: &quot;md:col-span-2",
+    span: "md:col-span-2",
     image: "gallery-1", // Fallback image
   },
 ];

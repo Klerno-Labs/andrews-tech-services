@@ -32,4 +32,3 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
     </div>
   );
 };
---- END FILE -->

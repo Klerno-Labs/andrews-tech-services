@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener(&quot;scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -63,7 +63,7 @@ export const Navbar = () => {
         <button
           className="md:hidden text-terminal-text"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu&quot;
+          aria-label="Toggle menu"
         >
           {isOpen ? <X /> : <Menu />}
         </button>

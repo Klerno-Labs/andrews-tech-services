@@ -10,4 +10,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://andrewstech.com/sitemap.xml', // Placeholder domain
   }
 }
---- END FILE -->

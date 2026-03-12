@@ -64,4 +64,3 @@ export const DataTable: React.FC<DataTableProps> = ({ columns, rows, highlightKe
     </div>
   );
 };
---- END FILE -->

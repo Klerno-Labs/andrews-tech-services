@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export function InventoryGrid() {
-  const [filter, setFilter] = useState<string>(&quot;All");
+  const [filter, setFilter] = useState<string>("All");
 
   const filteredData = filter === "All" 
     ? inventoryData 
@@ -35,7 +35,7 @@ export function InventoryGrid() {
                 onClick={() => setFilter(cat)}
                 className={`px-4 py-2 text-sm font-mono border transition-all whitespace-nowrap ${
                   filter === cat
-                    ? &quot;border-primary text-primary bg-primary/10"
+                    ? "border-primary text-primary bg-primary/10"
                     : "border-gray-800 text-gray-500 hover:text-gray-300 hover:border-gray-600"
                 }`}
               >

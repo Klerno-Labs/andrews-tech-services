@@ -15,7 +15,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener(&quot;scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -76,7 +76,7 @@ export function Navbar() {
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-primary focus:outline-none&quot;
+            className="md:hidden text-primary focus:outline-none"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

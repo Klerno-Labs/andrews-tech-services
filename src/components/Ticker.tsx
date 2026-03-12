@@ -26,4 +26,3 @@ export const Ticker = () => {
     </div>
   );
 };
---- END FILE -->

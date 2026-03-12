@@ -20,7 +20,7 @@ const inventory = [
 ];
 
 export default function InventoryPage() {
-  const [filter, setFilter] = useState<"all" | "phones" | "tablets">(&quot;all");
+  const [filter, setFilter] = useState<"all" | "phones" | "tablets">("all");
 
   const filteredItems = inventory.filter((item) => {
     if (filter === "phones") return item.model.includes("iPhone") || item.model.includes("Galaxy") || item.model.includes("Pixel");
@@ -40,19 +40,19 @@ export default function InventoryPage() {
         
         <div className="flex gap-2 font-mono text-sm">
           <button
-            onClick={() => setFilter(&quot;all")}
+            onClick={() => setFilter("all")}
             className={`px-4 py-2 border ${filter === "all" ? "border-terminal-green text-terminal-green bg-terminal-green/5" : "border-[#333] text-muted hover:border-muted"}`}
           >
             ALL_UNITS
           </button>
           <button
-            onClick={() => setFilter(&quot;phones")}
+            onClick={() => setFilter("phones")}
             className={`px-4 py-2 border ${filter === "phones" ? "border-terminal-green text-terminal-green bg-terminal-green/5" : "border-[#333] text-muted hover:border-muted"}`}
           >
             PHONES
           </button>
           <button
-            onClick={() => setFilter(&quot;tablets")}
+            onClick={() => setFilter("tablets")}
             className={`px-4 py-2 border ${filter === "tablets" ? "border-terminal-green text-terminal-green bg-terminal-green/5" : "border-[#333] text-muted hover:border-muted"}`}
           >
             TABLETS
@@ -106,4 +106,3 @@ export default function InventoryPage() {
     </div>
   );
 }
---- END FILE -->
